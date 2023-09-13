@@ -6,32 +6,42 @@ class Program
         Console.WriteLine("Welcome to the calculator!");
         Console.WriteLine("==========================");
         Console.Write("Please enter the operator (+, -, /, *): ");
-        string choice = Console.ReadLine()!;
-        Console.Write("Please enter the first number: ");
-        double firstNumber = Convert.ToDouble(Console.ReadLine());
-        Console.Write("Please enter the second number: ");
-        double secondNumber = Convert.ToDouble(Console.ReadLine());
+        string operatorChoice = Console.ReadLine()!;
+        Console.Write("How many numbers do you want to {0}?: ", operatorChoice);
+        int numberChoice = Convert.ToInt32(Console.ReadLine());
 
         double result = 0;
-
-        switch (choice)
+        for (int i = 1; i <= numberChoice; i++)
         {
-            case "+":
-                result = firstNumber + secondNumber;
-                break;
-            case "-":
-                result = firstNumber - secondNumber;
-                break;
-            case "*": 
-                result = firstNumber * secondNumber;
-                break;
-            case "/":
-                result = firstNumber / secondNumber;
-                break;
-            default:
-                Console.WriteLine("This is not a valid operator");
-                break;
+            Console.Write("Please enter number {0}: ", i);
+            double number = Convert.ToDouble(Console.ReadLine()); 
+            if (i == 1)
+            {
+                result = number;
+            }  
+            else
+            {
+                switch (operatorChoice)
+                {
+                    case "+":
+                        result += number;
+                        break;
+                    case "-":
+                        result -= number;
+                        break;
+                    case "*": 
+                        result *= number;
+                        break;
+                    case "/":
+                        result /= number;
+                        break;
+                    default:
+                        Console.WriteLine("This is not a valid operator");
+                        break;
+                }
+            }
         }
+        
         Console.WriteLine("The answer is: {0}", result);
 
     }
